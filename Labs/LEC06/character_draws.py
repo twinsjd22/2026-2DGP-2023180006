@@ -1,6 +1,6 @@
 # 실습 과제 진행
 from pico2d import *
-from math import *
+import math
 # 맨처음 해야할 일은.
 open_canvas(800, 600)
 character = load_image('character.png')
@@ -9,6 +9,19 @@ degree = 0
 theta = math.radians(degree)
 x = 400 + 200 * math.cos(theta)
 y = 300 + 200 * math.sin(theta)
+
+def draw_top():
+    print("top")
+    pass
+def draw_left():
+    print("left")
+    pass
+def draw_bottom():
+    print("bottom")
+    pass
+def draw_right():
+    print("right")
+    pass
 
 def move_circle():
     global degree, x, y
@@ -24,6 +37,10 @@ def move_circle():
 
 def move_rectangle():
     print('rectangle')
+    draw_top()
+    draw_left()
+    draw_bottom()
+    draw_right()
     pass
 def move_triangle():
     print('triangle')

@@ -4,7 +4,12 @@ import math
 # 맨처음 해야할 일은.
 open_canvas(800, 600)
 character = load_image('character.png')
-
+def draw_boy(x, y):
+    clear_canvas()
+    character.draw(x, y)
+    update_canvas()
+    delay(0.01)
+    
 def draw_top():
     print("top")
     pass
@@ -25,10 +30,7 @@ def move_circle():
         x = 400 + 200 * math.cos(theta)
         y = 300 + 200 * math.sin(theta)
         # 캐릭터 이미지 표시
-        clear_canvas()
-        character.draw(x, y)
-        update_canvas()
-        delay(0.01)
+        draw_boy(x, y)
 
 def move_rectangle():
     print('rectangle')

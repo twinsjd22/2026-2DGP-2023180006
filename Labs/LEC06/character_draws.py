@@ -17,6 +17,8 @@ def draw_top():
     pass
 def draw_right():
     print("right")
+    for y in range(550, 49, -5):
+        draw_boy(750, y)
     pass
 def draw_bottom():
     print("bottom")
@@ -45,7 +47,7 @@ def move_triangle():
     pass
 
 while True:
-    move_circle()
+    #move_circle()
     move_rectangle()
     move_triangle()
 

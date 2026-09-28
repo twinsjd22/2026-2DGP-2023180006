@@ -5,11 +5,6 @@ import math
 open_canvas(800, 600)
 character = load_image('character.png')
 
-degree = 0
-theta = math.radians(degree)
-x = 400 + 200 * math.cos(theta)
-y = 300 + 200 * math.sin(theta)
-
 def draw_top():
     print("top")
     pass
@@ -24,16 +19,16 @@ def draw_right():
     pass
 
 def move_circle():
-    global degree, x, y
     print('circle')
-    degree += 0.02
-    theta = math.radians(degree)
-    x = 400 + 200 * math.cos(theta)
-    y = 300 + 200 * math.sin(theta)
-    # 캐릭터 이미지 표시
-    clear_canvas()
-    character.draw(x, y)
-    update_canvas()
+    for degree in range(0, 360, 2):
+        theta = math.radians(degree)
+        x = 400 + 200 * math.cos(theta)
+        y = 300 + 200 * math.sin(theta)
+        # 캐릭터 이미지 표시
+        clear_canvas()
+        character.draw(x, y)
+        update_canvas()
+        delay(0.01)
 
 def move_rectangle():
     print('rectangle')

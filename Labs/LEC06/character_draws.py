@@ -14,14 +14,17 @@ def draw_top():
     print("top")
     for x in range(50, 751, 5):
         draw_boy(x, 550)
+
 def draw_right():
     print("right")
     for y in range(550, 49, -5):
         draw_boy(750, y)
+
 def draw_bottom():
     print("bottom")
     for x in range(750, 49, -5):
         draw_boy(x, 50)
+
 def draw_left():
     print("left")
     for y in range(50, 551, 5):
@@ -31,7 +34,7 @@ def draw_ab():
     print("ab")
     for x in range(100, 701, 5):
         draw_boy(x, 100)
-    pass
+
 def draw_bc():
     print("bc")
     n = 100
@@ -40,7 +43,7 @@ def draw_bc():
         x = 700 + (400 - 700) * t
         y = 100 + (500 - 100) * t
         draw_boy(x, y)
-    pass
+
 def draw_ca():
     print("ca")
     n = 100
@@ -49,7 +52,6 @@ def draw_ca():
         x = 400 + (100 - 400) * t
         y = 500 + (100 - 500) * t
         draw_boy(x, y)
-    pass
 
 def move_circle():
     print('circle')
@@ -71,11 +73,10 @@ def move_triangle():
     draw_ab()
     draw_bc()
     draw_ca()
-    pass
 
 while True:
-    #move_circle()
-    #move_rectangle()
+    move_circle()
+    move_rectangle()
     move_triangle()
 
 close_canvas()

@@ -11,7 +11,7 @@ def draw_boy(x, y):
     delay(0.01)
 
 def move_line(x0, y0, x1, y1):
-    n = 100
+    n = int(math.hypot(x1 - x0, y1 - y0) / 5)
     for step in range(n + 1):
         t = step / n
         x = x0 + (x1 - x0) * t

@@ -43,6 +43,12 @@ def draw_bc():
     pass
 def draw_ca():
     print("ca")
+    n = 100
+    for step in range(n + 1):
+        t = step / n
+        x = 400 + (100 - 400) * t
+        y = 500 + (100 - 500) * t
+        draw_boy(x, y)
     pass
 
 def move_circle():

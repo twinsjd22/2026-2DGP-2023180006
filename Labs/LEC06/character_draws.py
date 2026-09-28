@@ -40,8 +40,7 @@ def draw_left():
 
 def draw_ab():
     print("ab")
-    for x in range(100, 701, 5):
-        draw_boy(x, 100)
+    move_line(100, 100, 700, 100)
 
 def draw_bc():
     print("bc")

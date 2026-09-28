@@ -12,6 +12,8 @@ def draw_boy(x, y):
     
 def draw_top():
     print("top")
+    for x in range(50, 751, 5):
+        draw_boy(x, 550)
     pass
 def draw_left():
     print("left")
@@ -29,7 +31,6 @@ def move_circle():
         theta = math.radians(degree)
         x = 400 + 200 * math.cos(theta)
         y = 300 + 200 * math.sin(theta)
-        # 캐릭터 이미지 표시
         draw_boy(x, y)
 
 def move_rectangle():
@@ -44,7 +45,7 @@ def move_triangle():
     pass
 
 while True:
-    move_circle()
+   # move_circle()
     move_rectangle()
     move_triangle()
 

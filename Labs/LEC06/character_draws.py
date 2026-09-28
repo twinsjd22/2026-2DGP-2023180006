@@ -45,12 +45,7 @@ def draw_ab():
 
 def draw_bc():
     print("bc")
-    n = 100
-    for step in range(n + 1):
-        t = step / n
-        x = 700 + (400 - 700) * t
-        y = 100 + (500 - 100) * t
-        draw_boy(x, y)
+    move_line(700, 100, 400, 500)
 
 def draw_ca():
     print("ca")

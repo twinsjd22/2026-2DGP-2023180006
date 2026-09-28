@@ -24,8 +24,7 @@ def draw_top():
 
 def draw_right():
     print("right")
-    for y in range(550, 49, -5):
-        draw_boy(750, y)
+    move_line(750, 550, 750, 50)
 
 def draw_bottom():
     print("bottom")

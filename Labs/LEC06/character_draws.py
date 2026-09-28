@@ -20,8 +20,7 @@ def move_line(x0, y0, x1, y1):
 
 def draw_top():
     print("top")
-    for x in range(50, 751, 5):
-        draw_boy(x, 550)
+    move_line(50, 550, 750, 550)
 
 def draw_right():
     print("right")

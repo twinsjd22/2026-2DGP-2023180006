@@ -1,7 +1,7 @@
 # 실습 과제 진행
 from pico2d import *
 import math
-# 맨처음 해야할 일은.
+
 open_canvas(800, 600)
 character = load_image('character.png')
 def draw_boy(x, y):
@@ -15,14 +15,14 @@ def draw_top():
     for x in range(50, 751, 5):
         draw_boy(x, 550)
     pass
-def draw_left():
-    print("left")
+def draw_right():
+    print("right")
     pass
 def draw_bottom():
     print("bottom")
     pass
-def draw_right():
-    print("right")
+def draw_left():
+    print("left")
     pass
 
 def move_circle():
@@ -36,16 +36,16 @@ def move_circle():
 def move_rectangle():
     print('rectangle')
     draw_top()
-    draw_left()
-    draw_bottom()
     draw_right()
+    draw_bottom()
+    draw_left()
     pass
 def move_triangle():
     print('triangle')
     pass
 
 while True:
-   # move_circle()
+    move_circle()
     move_rectangle()
     move_triangle()
 

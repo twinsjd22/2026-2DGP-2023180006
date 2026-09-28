@@ -6,6 +6,7 @@ RADIUS = 200
 STEP = 5  # 한 프레임에 이동하는 거리(픽셀)
 
 RECTANGLE = [(50, 550), (750, 550), (750, 50), (50, 50)]
+TRIANGLE = [(100, 100), (700, 100), (400, 500)]
 
 
 def draw_character(x, y):
@@ -45,6 +46,7 @@ def move_rectangle():
 
 def move_triangle():
     print('triangle')
+    move_polygon(TRIANGLE)
 
 
 open_canvas(800, 600)

@@ -27,6 +27,8 @@ def draw_bottom():
     pass
 def draw_left():
     print("left")
+    for y in range(50, 551, 5):
+        draw_boy(50, y)
     pass
 
 def move_circle():

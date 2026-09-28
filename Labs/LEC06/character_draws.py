@@ -28,8 +28,7 @@ def draw_right():
 
 def draw_bottom():
     print("bottom")
-    for x in range(750, 49, -5):
-        draw_boy(x, 50)
+    move_line(750, 50, 50, 50)
 
 def draw_left():
     print("left")

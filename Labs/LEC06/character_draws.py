@@ -27,6 +27,16 @@ def draw_left():
     for y in range(50, 551, 5):
         draw_boy(50, y)
 
+def draw_ab():
+    print("ab")
+    pass
+def draw_bc():
+    print("bc")
+    pass
+def draw_ca():
+    print("ca")
+    pass
+
 def move_circle():
     print('circle')
     for degree in range(0, 360, 2):
@@ -44,6 +54,9 @@ def move_rectangle():
     
 def move_triangle():
     print('triangle')
+    draw_ab()
+    draw_bc()
+    draw_ca()
     pass
 
 while True:

@@ -8,8 +8,22 @@ STEP = 5  # 한 프레임에 이동하는 거리(픽셀)
 RECTANGLE = [(50, 550), (750, 550), (750, 50), (50, 50)]
 TRIANGLE = [(100, 100), (700, 100), (400, 500)]
 
+running = True
+
+
+def handle_events():
+    global running
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            running = False
+
 
 def draw_character(x, y):
+    handle_events()
+    if not running:  # 종료 요청 후에는 남은 경로를 그리지 않고 바로 빠져나간다
+        return
     clear_canvas()
     character.draw(x, y)
     update_canvas()
@@ -52,7 +66,7 @@ def move_triangle():
 open_canvas(800, 600)
 character = load_image('character.png')
 
-while True:
+while running:
     move_circle()
     move_rectangle()
     move_triangle()

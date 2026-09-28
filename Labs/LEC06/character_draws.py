@@ -29,6 +29,8 @@ def draw_left():
 
 def draw_ab():
     print("ab")
+    for x in range(100, 701, 5):
+        draw_boy(x, 100)
     pass
 def draw_bc():
     print("bc")

@@ -34,6 +34,11 @@ def draw_ab():
     pass
 def draw_bc():
     print("bc")
+    t = 0.5
+    x = 700 + (400 - 700) * t
+    y = 100 + (500 - 100) * t
+    draw_boy(x, y)
+    delay(1)
     pass
 def draw_ca():
     print("ca")

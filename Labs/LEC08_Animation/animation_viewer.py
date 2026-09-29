@@ -13,7 +13,9 @@ walk_frames = [
 def draw_walk():
     for left, bottom, width, height in walk_frames:
         clear_canvas()
-        kirby.clip_draw(left, bottom, width, height, 400, 300, width * 5, height * 5)
+        kirby.clip_draw(left, bottom, width, height,
+                        400, 230 + height * 5 // 2,
+                        width * 5, height * 5)
         update_canvas()
         delay(0.1)
 

@@ -1,5 +1,12 @@
 from pico2d import *
 
+SCALE = 8           # 확대 배율
+CENTER_X = 400      # 화면 가운데 x
+GROUND_Y = 180      # 커비 발이 닿는 높이
+FRAME_DELAY = 0.1   # 프레임 사이 간격(초)
+REPEAT_COUNT = 5    # 한 동작 반복 횟수
+PAUSE_TIME = 1      # 동작이 끝난 뒤 정지 시간(초)
+
 open_canvas()
 
 kirby = load_image('kirby.png')
@@ -27,15 +34,15 @@ attack_frames = [
 ]
 
 def play_animation(frames):
-    for i in range(5):
+    for i in range(REPEAT_COUNT):
         for left, bottom, width, height in frames:
             clear_canvas()
             kirby.clip_draw(left, bottom, width, height,
-                            400, 230 + height * 5 // 2,
-                            width * 5, height * 5)
+                            CENTER_X, GROUND_Y + height * SCALE // 2,
+                            width * SCALE, height * SCALE)
             update_canvas()
-            delay(0.1)
-    delay(1)
+            delay(FRAME_DELAY)
+    delay(PAUSE_TIME)
 
 def draw_walk():
     play_animation(walk_frames)

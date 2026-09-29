@@ -11,9 +11,11 @@ walk_frames = [
 ]
 
 def draw_walk():
-    clear_canvas()
-    kirby.clip_draw(125, 454, 35, 28, 400, 300)
-    update_canvas()
+    for left, bottom, width, height in walk_frames:
+        clear_canvas()
+        kirby.clip_draw(left, bottom, width, height, 400, 300)
+        update_canvas()
+        delay(0.1)
 
 def draw_run():
     print("뛰기")

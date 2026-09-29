@@ -5,8 +5,9 @@ open_canvas()
 kirby = load_image('kirby.png')
 
 def draw_walk():
-    print("걷기")
-    pass
+    clear_canvas()
+    kirby.clip_draw(125, 454, 35, 28, 400, 300)
+    update_canvas()
 
 def draw_run():
     print("뛰기")
@@ -21,12 +22,9 @@ def draw_attack():
     pass
 
 while True:
-    clear_canvas()
-    kirby.clip_draw(10, 454, 27, 26, 400, 300)
     draw_walk()
     draw_run()
     draw_jump()
     draw_attack()
-    update_canvas()
 
 close_canvas()

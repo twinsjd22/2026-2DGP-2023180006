@@ -1,3 +1,6 @@
+from pico2d import *
+
+open_canvas()
 
 def draw_walk():
     print("걷기")
@@ -21,3 +24,5 @@ while True:
     draw_jump()
     draw_attack()
     pass
+
+close_canvas()

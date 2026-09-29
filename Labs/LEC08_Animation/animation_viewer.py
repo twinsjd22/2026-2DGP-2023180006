@@ -2,6 +2,8 @@ from pico2d import *
 
 open_canvas()
 
+kirby = load_image('kirby.png')
+
 def draw_walk():
     print("걷기")
     pass
@@ -19,10 +21,12 @@ def draw_attack():
     pass
 
 while True:
+    clear_canvas()
+    kirby.clip_draw(10, 454, 27, 26, 400, 300)
     draw_walk()
     draw_run()
     draw_jump()
     draw_attack()
-    pass
+    update_canvas()
 
 close_canvas()

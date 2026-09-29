@@ -19,6 +19,7 @@ def draw_walk():
                             width * 5, height * 5)
             update_canvas()
             delay(0.1)
+    delay(1)
 
 def draw_run():
     print("뛰기")

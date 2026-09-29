@@ -60,8 +60,15 @@ def draw_jump():
     delay(1)
 
 def draw_attack():
-    print("공격")
-    pass
+    for i in range(5):
+        for left, bottom, width, height in attack_frames:
+            clear_canvas()
+            kirby.clip_draw(left, bottom, width, height,
+                            400, 230 + height * 5 // 2,
+                            width * 5, height * 5)
+            update_canvas()
+            delay(0.1)
+    delay(1)
 
 while True:
     draw_walk()

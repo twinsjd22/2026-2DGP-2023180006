@@ -26,9 +26,9 @@ attack_frames = [
     (463, 53, 42, 40), (515, 53, 23, 44), (549, 53, 24, 37),
 ]
 
-def draw_walk():
+def play_animation(frames):
     for i in range(5):
-        for left, bottom, width, height in walk_frames:
+        for left, bottom, width, height in frames:
             clear_canvas()
             kirby.clip_draw(left, bottom, width, height,
                             400, 230 + height * 5 // 2,
@@ -36,39 +36,18 @@ def draw_walk():
             update_canvas()
             delay(0.1)
     delay(1)
+
+def draw_walk():
+    play_animation(walk_frames)
 
 def draw_run():
-    for i in range(5):
-        for left, bottom, width, height in run_frames:
-            clear_canvas()
-            kirby.clip_draw(left, bottom, width, height,
-                            400, 230 + height * 5 // 2,
-                            width * 5, height * 5)
-            update_canvas()
-            delay(0.1)
-    delay(1)
+    play_animation(run_frames)
 
 def draw_jump():
-    for i in range(5):
-        for left, bottom, width, height in jump_frames:
-            clear_canvas()
-            kirby.clip_draw(left, bottom, width, height,
-                            400, 230 + height * 5 // 2,
-                            width * 5, height * 5)
-            update_canvas()
-            delay(0.1)
-    delay(1)
+    play_animation(jump_frames)
 
 def draw_attack():
-    for i in range(5):
-        for left, bottom, width, height in attack_frames:
-            clear_canvas()
-            kirby.clip_draw(left, bottom, width, height,
-                            400, 230 + height * 5 // 2,
-                            width * 5, height * 5)
-            update_canvas()
-            delay(0.1)
-    delay(1)
+    play_animation(attack_frames)
 
 while True:
     draw_walk()

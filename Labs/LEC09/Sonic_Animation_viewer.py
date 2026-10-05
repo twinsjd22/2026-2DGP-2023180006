@@ -71,6 +71,12 @@ hurt_frames = [
     (184, 156, 40, 28), (232, 157, 39, 27),
 ]
 
+# 9번 줄: 정면 달리기
+front_run_frames = [
+    (1, 108, 27, 38), (31, 110, 31, 36), (64, 110, 31, 36), (99, 110, 33, 38),
+    (136, 110, 32, 36), (176, 110, 33, 36), (217, 110, 33, 36), (254, 111, 33, 36),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -94,5 +100,6 @@ play_animation(dash_frames)
 play_animation(peel_out_frames)
 play_animation(turn_frames)
 play_animation(hurt_frames)
+play_animation(front_run_frames)
 
 close_canvas()

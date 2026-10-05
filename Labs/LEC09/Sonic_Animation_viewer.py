@@ -22,7 +22,9 @@ idle_frames = [
 
 for left, bottom, width, height in idle_frames:
     clear_canvas()
-    sonic.clip_draw(left, bottom, width, height, CENTER_X, SCREEN_HEIGHT // 2, width * SCALE, height * SCALE)
+    sonic.clip_draw(left, bottom, width, height,
+                    CENTER_X, GROUND_Y + height * SCALE // 2,
+                    width * SCALE, height * SCALE)
     update_canvas()
     delay(FRAME_DELAY)
 

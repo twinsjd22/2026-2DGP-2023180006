@@ -17,6 +17,7 @@ ROLL_SPEED = 500
 DASH_SPEED = 300
 PEEL_OUT_SPEED = 700
 HURT_SPEED = -200               # 피격되면 뒤로 밀려남
+START_OFFSET = 200              # 이동 동작이 출발하는 가장자리로부터의 거리
 EDGE_MARGIN = 300               # 화면 밖 여유 폭 (가장 넓은 프레임 480px의 절반보다 크게)
 
 open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -129,14 +130,23 @@ def wait(seconds):
         handle_events()
         delay(0.01)
 
+# 제자리 동작은 가운데, 오른쪽 이동은 왼쪽 가장자리, 왼쪽 이동은 오른쪽 가장자리에서 출발
+def get_start_x(speed):
+    if speed > 0:
+        return START_OFFSET
+    if speed < 0:
+        return SCREEN_WIDTH - START_OFFSET
+    return CENTER_X
+
 # 한 동작을 PLAY_TIME초 동안 반복 재생하고 PAUSE_TIME초 정지
 # speed만큼 경과 시간에 비례해 가로로 이동한다
 # 발이 GROUND_Y에 닿도록 프레임 높이의 절반만큼 올려서 그린다
 def play_animation(frames, speed):
+    start_x = get_start_x(speed)
     start_time = get_time()
     frame = 0
     while running and get_time() - start_time < PLAY_TIME:
-        x = CENTER_X + speed * (get_time() - start_time)
+        x = start_x + speed * (get_time() - start_time)
         x = (x + EDGE_MARGIN) % (SCREEN_WIDTH + 2 * EDGE_MARGIN) - EDGE_MARGIN    # 화면 밖으로 나가면 반대편에서 등장
         left, bottom, width, height = frames[frame]
         clear_canvas()

@@ -17,6 +17,7 @@ ROLL_SPEED = 500
 DASH_SPEED = 300
 PEEL_OUT_SPEED = 700
 HURT_SPEED = -200               # 피격되면 뒤로 밀려남
+EDGE_MARGIN = 300               # 화면 밖 여유 폭 (가장 넓은 프레임 480px의 절반보다 크게)
 
 open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -136,6 +137,7 @@ def play_animation(frames, speed):
     frame = 0
     while running and get_time() - start_time < PLAY_TIME:
         x = CENTER_X + speed * (get_time() - start_time)
+        x = (x + EDGE_MARGIN) % (SCREEN_WIDTH + 2 * EDGE_MARGIN) - EDGE_MARGIN    # 화면 밖으로 나가면 반대편에서 등장
         left, bottom, width, height = frames[frame]
         clear_canvas()
         sonic.clip_draw(left, bottom, width, height,

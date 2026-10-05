@@ -2,9 +2,9 @@ from pico2d import *
 
 SCREEN_WIDTH = 1200             # 화면 너비
 SCREEN_HEIGHT = 800             # 화면 높이
-SCALE = 10                      # 확대 배율
+SCALE = 12                      # 확대 배율 (가장 큰 프레임 45px → 540px)
 CENTER_X = SCREEN_WIDTH // 2    # 화면 가운데 x
-GROUND_Y = 150                  # 소닉 발이 닿는 높이
+GROUND_Y = 120                  # 소닉 발이 닿는 높이
 FRAME_DELAY = 0.1               # 프레임 사이 간격(초)
 PLAY_TIME = 5                   # 한 동작 재생 시간(초)
 PAUSE_TIME = 1                  # 동작이 끝난 뒤 정지 시간(초)

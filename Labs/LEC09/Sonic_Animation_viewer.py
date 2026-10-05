@@ -22,6 +22,13 @@ idle_frames = [
     (240, 448, 29, 38), (270, 448, 24, 32), (302, 448, 29, 26),
 ]
 
+# 2번 줄: 걷기
+walk_frames = [
+    (8, 408, 26, 37), (37, 408, 27, 37), (65, 407, 31, 38), (97, 408, 37, 37),
+    (135, 410, 32, 35), (170, 408, 32, 38), (206, 408, 26, 38), (238, 408, 24, 37),
+    (263, 408, 30, 37), (295, 408, 36, 37), (334, 409, 32, 36), (370, 408, 29, 38),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -37,5 +44,6 @@ def play_animation(frames):
     delay(PAUSE_TIME)
 
 play_animation(idle_frames)
+play_animation(walk_frames)
 
 close_canvas()

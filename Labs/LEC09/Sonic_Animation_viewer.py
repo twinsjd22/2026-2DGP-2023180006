@@ -12,7 +12,7 @@ open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 sonic = load_image('sonic-sprite.png')
 
 clear_canvas()
-sonic.draw(CENTER_X, SCREEN_HEIGHT // 2)
+sonic.clip_draw(1, 447, 29, 39, CENTER_X, SCREEN_HEIGHT // 2)
 update_canvas()
 delay(2)
 

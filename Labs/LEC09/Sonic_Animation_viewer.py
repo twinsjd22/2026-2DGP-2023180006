@@ -117,7 +117,8 @@ def play_animation(frames):
         delay(FRAME_DELAY)
     delay(PAUSE_TIME)
 
-for frames in animations:
-    play_animation(frames)
+while True:
+    for frames in animations:
+        play_animation(frames)
 
 close_canvas()

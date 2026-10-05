@@ -48,6 +48,12 @@ ball_frames = [
     (139, 292, 29, 27), (174, 292, 29, 27),
 ]
 
+# 6번 줄: 가속
+dash_frames = [
+    (1, 251, 29, 35), (36, 251, 30, 35), (74, 251, 31, 35), (111, 251, 31, 36),
+    (149, 251, 30, 35), (186, 251, 31, 36),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -67,5 +73,6 @@ play_animation(walk_frames)
 play_animation(run_frames)
 play_animation(spin_frames)
 play_animation(ball_frames)
+play_animation(dash_frames)
 
 close_canvas()

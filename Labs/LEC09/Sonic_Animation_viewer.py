@@ -77,6 +77,16 @@ front_run_frames = [
     (136, 110, 32, 36), (176, 110, 33, 36), (217, 110, 33, 36), (254, 111, 33, 36),
 ]
 
+# 10번 줄 앞: 놀람
+surprise_frames = [
+    (6, 56, 34, 40), (49, 56, 34, 43),
+]
+
+# 10번 줄 뒤: 포즈
+pose_frames = [
+    (96, 59, 23, 39), (125, 59, 23, 39),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -101,5 +111,7 @@ play_animation(peel_out_frames)
 play_animation(turn_frames)
 play_animation(hurt_frames)
 play_animation(front_run_frames)
+play_animation(surprise_frames)
+play_animation(pose_frames)
 
 close_canvas()

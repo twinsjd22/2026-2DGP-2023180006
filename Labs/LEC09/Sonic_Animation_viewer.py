@@ -6,6 +6,7 @@ SCALE = 10                      # 확대 배율
 CENTER_X = SCREEN_WIDTH // 2    # 화면 가운데 x
 GROUND_Y = 150                  # 소닉 발이 닿는 높이
 FRAME_DELAY = 0.1               # 프레임 사이 간격(초)
+PLAY_TIME = 5                   # 한 동작 재생 시간(초)
 
 open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -21,12 +22,16 @@ idle_frames = [
 ]
 
 def play_animation(frames):
-    for left, bottom, width, height in frames:
+    start_time = get_time()
+    frame = 0
+    while get_time() - start_time < PLAY_TIME:
+        left, bottom, width, height = frames[frame]
         clear_canvas()
         sonic.clip_draw(left, bottom, width, height,
                         CENTER_X, GROUND_Y + height * SCALE // 2,
                         width * SCALE, height * SCALE)
         update_canvas()
+        frame = (frame + 1) % len(frames)
         delay(FRAME_DELAY)
 
 play_animation(idle_frames)

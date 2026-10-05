@@ -35,6 +35,13 @@ run_frames = [
     (181, 362, 34, 41), (228, 363, 33, 40),
 ]
 
+# 4번 줄: 스핀(몸을 말기)
+spin_frames = [
+    (1, 326, 29, 30), (35, 327, 29, 31), (67, 327, 30, 29), (98, 327, 31, 29),
+    (131, 327, 29, 30), (162, 326, 29, 31), (193, 326, 30, 29), (230, 326, 31, 29),
+    (268, 325, 30, 30),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -52,5 +59,6 @@ def play_animation(frames):
 play_animation(idle_frames)
 play_animation(walk_frames)
 play_animation(run_frames)
+play_animation(spin_frames)
 
 close_canvas()

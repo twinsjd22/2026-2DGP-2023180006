@@ -1,3 +1,4 @@
+# Sonic 애니메이션 뷰어: 스프라이트시트의 모든 동작을 5초씩 재생하고 1초 쉬며 무한 반복한다.
 from pico2d import *
 
 SCREEN_WIDTH = 1200             # 화면 너비
@@ -103,6 +104,7 @@ animations = [
     pose_frames,
 ]
 
+# 창 닫기, ESC 키가 들어오면 종료 표시
 def handle_events():
     global running
     for event in get_events():
@@ -111,12 +113,15 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
 
+# 이벤트를 받으면서 seconds초 동안 기다린다
 def wait(seconds):
     start_time = get_time()
     while running and get_time() - start_time < seconds:
         handle_events()
         delay(0.01)
 
+# 한 동작을 PLAY_TIME초 동안 반복 재생하고 PAUSE_TIME초 정지
+# 발이 GROUND_Y에 닿도록 프레임 높이의 절반만큼 올려서 그린다
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -131,11 +136,10 @@ def play_animation(frames):
         wait(FRAME_DELAY)
     wait(PAUSE_TIME)
 
+# 전체 동작을 무한 반복 (종료 시 play_animation이 바로 돌아옴)
 running = True
 while running:
     for frames in animations:
-        if not running:
-            break
         play_animation(frames)
 
 close_canvas()

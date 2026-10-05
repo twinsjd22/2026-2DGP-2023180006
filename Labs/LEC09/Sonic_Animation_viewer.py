@@ -10,6 +10,14 @@ FRAME_DELAY = 0.1               # 프레임 사이 간격(초)
 PLAY_TIME = 5                   # 한 동작 재생 시간(초)
 PAUSE_TIME = 1                  # 동작이 끝난 뒤 정지 시간(초)
 
+# 가로 이동 속도(px/초): 양수는 오른쪽, 음수는 왼쪽
+WALK_SPEED = 150
+RUN_SPEED = 400
+ROLL_SPEED = 500
+DASH_SPEED = 300
+PEEL_OUT_SPEED = 700
+HURT_SPEED = -200               # 피격되면 뒤로 밀려남
+
 open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 
 sonic = load_image('sonic-sprite.png')

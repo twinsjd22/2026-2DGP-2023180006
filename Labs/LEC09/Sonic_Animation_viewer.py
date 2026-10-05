@@ -129,15 +129,17 @@ def wait(seconds):
         delay(0.01)
 
 # 한 동작을 PLAY_TIME초 동안 반복 재생하고 PAUSE_TIME초 정지
+# speed만큼 경과 시간에 비례해 가로로 이동한다
 # 발이 GROUND_Y에 닿도록 프레임 높이의 절반만큼 올려서 그린다
 def play_animation(frames, speed):
     start_time = get_time()
     frame = 0
     while running and get_time() - start_time < PLAY_TIME:
+        x = CENTER_X + speed * (get_time() - start_time)
         left, bottom, width, height = frames[frame]
         clear_canvas()
         sonic.clip_draw(left, bottom, width, height,
-                        CENTER_X, GROUND_Y + height * SCALE // 2,
+                        x, GROUND_Y + height * SCALE // 2,
                         width * SCALE, height * SCALE)
         update_canvas()
         frame = (frame + 1) % len(frames)

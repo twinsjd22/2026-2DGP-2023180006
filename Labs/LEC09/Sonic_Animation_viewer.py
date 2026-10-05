@@ -54,6 +54,12 @@ dash_frames = [
     (149, 251, 30, 35), (186, 251, 31, 36),
 ]
 
+# 7번 줄: 피겨에이트 달리기
+peel_out_frames = [
+    (1, 207, 29, 35), (36, 207, 30, 35), (72, 208, 39, 31), (123, 208, 39, 32),
+    (172, 208, 39, 31), (218, 208, 38, 32),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -74,5 +80,6 @@ play_animation(run_frames)
 play_animation(spin_frames)
 play_animation(ball_frames)
 play_animation(dash_frames)
+play_animation(peel_out_frames)
 
 close_canvas()

@@ -80,7 +80,7 @@ LEC08의 `animation_viewer.py`(커비 뷰어)와 같은 방식(pico2d, `clip_dra
 
 ## 6. 비기능 요구사항
 
-- **설정값은 상수로**: `SCREEN_WIDTH = 1200`, `SCREEN_HEIGHT = 800`, `SCALE`, `CENTER_X = SCREEN_WIDTH // 2`, `GROUND_Y`, `FRAME_DELAY`, `PLAY_TIME = 5`, `PAUSE_TIME = 1`, 이동 속도(`WALK_SPEED` 등), `EDGE_MARGIN`을 파일 위쪽에 모은다.
+- **설정값은 상수로**: `SCREEN_WIDTH = 1200`, `SCREEN_HEIGHT = 800`, `SCALE`, `CENTER_X = SCREEN_WIDTH // 2`, `GROUND_Y`, `FRAME_DELAY`, `PLAY_TIME = 5`, `PAUSE_TIME = 1`, 이동 속도(`WALK_SPEED` 등), `START_OFFSET`, `EDGE_MARGIN`을 파일 위쪽에 모은다.
 - **화면 안에 들어오게**: 가장 큰 프레임에 배율을 곱해도 캔버스(1200 × 800)를 넘지 않게 배율을 고른다. 소닉 프레임은 가장 큰 것이 대략 45px이므로 배율 **8~12** 정도를 기준으로 조정한다. (배율 12면 높이 약 540px)
 - **중복 없는 코드**: 그리기·재생 코드는 `play_animation` 한 곳에만 둔다.
 - **읽기 쉬운 데이터**: 프레임 좌표는 한 줄에 몇 개씩 정리하고, 리스트마다 어떤 동작인지 주석을 단다.
@@ -197,6 +197,7 @@ close_canvas()
 | 놀람 | `surprise_frames` | 0 | 제자리 |
 | 포즈 | `pose_frames` | 0 | 제자리 |
 
+- 출발 위치: 제자리는 `CENTER_X`, 오른쪽 이동은 `START_OFFSET`(200), 왼쪽 이동은 `SCREEN_WIDTH - START_OFFSET`. 완전히 화면 밖에서 출발하면 걷기 속도에서 약 2초 동안 안 보이므로 가장자리 안쪽에서 출발한다.
 - 위치 계산: `x = 출발 x + speed × 경과 시간`
 - 화면 감싸기: 양쪽에 `EDGE_MARGIN`(가장 넓은 프레임 480px의 절반보다 큰 300px)만큼 여유를 두고, `x = (x + EDGE_MARGIN) % (SCREEN_WIDTH + 2 * EDGE_MARGIN) - EDGE_MARGIN`으로 반대편으로 넘긴다.
 

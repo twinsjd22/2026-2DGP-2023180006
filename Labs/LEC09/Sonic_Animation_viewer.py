@@ -20,12 +20,15 @@ idle_frames = [
     (240, 448, 29, 38), (270, 448, 24, 32), (302, 448, 29, 26),
 ]
 
-for left, bottom, width, height in idle_frames:
-    clear_canvas()
-    sonic.clip_draw(left, bottom, width, height,
-                    CENTER_X, GROUND_Y + height * SCALE // 2,
-                    width * SCALE, height * SCALE)
-    update_canvas()
-    delay(FRAME_DELAY)
+def play_animation(frames):
+    for left, bottom, width, height in frames:
+        clear_canvas()
+        sonic.clip_draw(left, bottom, width, height,
+                        CENTER_X, GROUND_Y + height * SCALE // 2,
+                        width * SCALE, height * SCALE)
+        update_canvas()
+        delay(FRAME_DELAY)
+
+play_animation(idle_frames)
 
 close_canvas()

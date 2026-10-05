@@ -7,6 +7,7 @@ CENTER_X = SCREEN_WIDTH // 2    # 화면 가운데 x
 GROUND_Y = 150                  # 소닉 발이 닿는 높이
 FRAME_DELAY = 0.1               # 프레임 사이 간격(초)
 PLAY_TIME = 5                   # 한 동작 재생 시간(초)
+PAUSE_TIME = 1                  # 동작이 끝난 뒤 정지 시간(초)
 
 open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
 
@@ -33,6 +34,7 @@ def play_animation(frames):
         update_canvas()
         frame = (frame + 1) % len(frames)
         delay(FRAME_DELAY)
+    delay(PAUSE_TIME)
 
 play_animation(idle_frames)
 

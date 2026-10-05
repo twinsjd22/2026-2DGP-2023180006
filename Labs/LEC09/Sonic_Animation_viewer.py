@@ -87,6 +87,22 @@ pose_frames = [
     (96, 59, 23, 39), (125, 59, 23, 39),
 ]
 
+# 재생 순서
+animations = [
+    idle_frames,
+    walk_frames,
+    run_frames,
+    spin_frames,
+    ball_frames,
+    dash_frames,
+    peel_out_frames,
+    turn_frames,
+    hurt_frames,
+    front_run_frames,
+    surprise_frames,
+    pose_frames,
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -101,17 +117,7 @@ def play_animation(frames):
         delay(FRAME_DELAY)
     delay(PAUSE_TIME)
 
-play_animation(idle_frames)
-play_animation(walk_frames)
-play_animation(run_frames)
-play_animation(spin_frames)
-play_animation(ball_frames)
-play_animation(dash_frames)
-play_animation(peel_out_frames)
-play_animation(turn_frames)
-play_animation(hurt_frames)
-play_animation(front_run_frames)
-play_animation(surprise_frames)
-play_animation(pose_frames)
+for frames in animations:
+    play_animation(frames)
 
 close_canvas()

@@ -42,6 +42,12 @@ spin_frames = [
     (268, 325, 30, 30),
 ]
 
+# 5번 줄: 볼(구르기)
+ball_frames = [
+    (1, 292, 30, 27), (36, 292, 29, 27), (70, 292, 29, 27), (105, 292, 29, 27),
+    (139, 292, 29, 27), (174, 292, 29, 27),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -60,5 +66,6 @@ play_animation(idle_frames)
 play_animation(walk_frames)
 play_animation(run_frames)
 play_animation(spin_frames)
+play_animation(ball_frames)
 
 close_canvas()

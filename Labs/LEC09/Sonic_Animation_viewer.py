@@ -60,6 +60,17 @@ peel_out_frames = [
     (172, 208, 39, 31), (218, 208, 38, 32),
 ]
 
+# 8번 줄 앞: 제자리 회전
+turn_frames = [
+    (1, 154, 24, 45), (31, 154, 29, 44), (65, 154, 20, 44), (90, 155, 25, 43),
+    (119, 155, 25, 43), (149, 154, 20, 44),
+]
+
+# 8번 줄 뒤: 피격
+hurt_frames = [
+    (184, 156, 40, 28), (232, 157, 39, 27),
+]
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
@@ -81,5 +92,7 @@ play_animation(spin_frames)
 play_animation(ball_frames)
 play_animation(dash_frames)
 play_animation(peel_out_frames)
+play_animation(turn_frames)
+play_animation(hurt_frames)
 
 close_canvas()

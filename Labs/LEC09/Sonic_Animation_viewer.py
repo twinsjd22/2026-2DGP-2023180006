@@ -103,10 +103,24 @@ animations = [
     pose_frames,
 ]
 
+def handle_events():
+    global running
+    for event in get_events():
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            running = False
+
+def wait(seconds):
+    start_time = get_time()
+    while running and get_time() - start_time < seconds:
+        handle_events()
+        delay(0.01)
+
 def play_animation(frames):
     start_time = get_time()
     frame = 0
-    while get_time() - start_time < PLAY_TIME:
+    while running and get_time() - start_time < PLAY_TIME:
         left, bottom, width, height = frames[frame]
         clear_canvas()
         sonic.clip_draw(left, bottom, width, height,
@@ -114,11 +128,14 @@ def play_animation(frames):
                         width * SCALE, height * SCALE)
         update_canvas()
         frame = (frame + 1) % len(frames)
-        delay(FRAME_DELAY)
-    delay(PAUSE_TIME)
+        wait(FRAME_DELAY)
+    wait(PAUSE_TIME)
 
-while True:
+running = True
+while running:
     for frames in animations:
+        if not running:
+            break
         play_animation(frames)
 
 close_canvas()

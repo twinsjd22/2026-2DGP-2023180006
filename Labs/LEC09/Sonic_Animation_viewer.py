@@ -96,20 +96,20 @@ pose_frames = [
     (96, 59, 23, 39), (125, 59, 23, 39),
 ]
 
-# 재생 순서
+# 재생 순서: (프레임 리스트, 가로 이동 속도)
 animations = [
-    idle_frames,
-    walk_frames,
-    run_frames,
-    spin_frames,
-    ball_frames,
-    dash_frames,
-    peel_out_frames,
-    turn_frames,
-    hurt_frames,
-    front_run_frames,
-    surprise_frames,
-    pose_frames,
+    (idle_frames, 0),
+    (walk_frames, WALK_SPEED),
+    (run_frames, RUN_SPEED),
+    (spin_frames, 0),
+    (ball_frames, ROLL_SPEED),
+    (dash_frames, DASH_SPEED),
+    (peel_out_frames, PEEL_OUT_SPEED),
+    (turn_frames, 0),
+    (hurt_frames, HURT_SPEED),
+    (front_run_frames, 0),          # 화면 쪽으로 달려서 가로 이동 없음
+    (surprise_frames, 0),
+    (pose_frames, 0),
 ]
 
 # 창 닫기, ESC 키가 들어오면 종료 표시
@@ -130,7 +130,7 @@ def wait(seconds):
 
 # 한 동작을 PLAY_TIME초 동안 반복 재생하고 PAUSE_TIME초 정지
 # 발이 GROUND_Y에 닿도록 프레임 높이의 절반만큼 올려서 그린다
-def play_animation(frames):
+def play_animation(frames, speed):
     start_time = get_time()
     frame = 0
     while running and get_time() - start_time < PLAY_TIME:
@@ -147,7 +147,7 @@ def play_animation(frames):
 # 전체 동작을 무한 반복 (종료 시 play_animation이 바로 돌아옴)
 running = True
 while running:
-    for frames in animations:
-        play_animation(frames)
+    for frames, speed in animations:
+        play_animation(frames, speed)
 
 close_canvas()

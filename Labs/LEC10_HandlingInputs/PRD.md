@@ -31,7 +31,7 @@ LEC10 실습 `move_character_with_key.py`(좌우 이동)와 `move_character_with
 | 라이브러리 | pico2d                                                             |
 | 파일 구성  | 단일 파일`boy_move_4dir.py`                                      |
 | 리소스     | `animation_sheet.png`(소년), `TUK_GROUND.png`(배경), 같은 폴더 |
-| 화면 크기  | **1280 × 1024** (배경 이미지 크기와 같게)                   |
+| 화면 크기  | **1000 × 800** (배경과 같은 5:4 비율, 노트북 화면에 다 들어오게) |
 | 실행       | `Labs/LEC10_HandlingInputs`에서 `python boy_move_4dir.py`      |
 
 ## 4. 리소스 분석
@@ -53,13 +53,14 @@ LEC10 실습 `move_character_with_key.py`(좌우 이동)와 `move_character_with
 
 ### `TUK_GROUND.png`
 
-- 크기: **1280 × 1024 px**. 화면 가운데 `(640, 512)`에 원본 크기로 그리면 화면을 꽉 채운다.
+- 크기: **1280 × 1024 px**. 창(1000 × 800)보다 크므로 `draw(500, 400, 1000, 800)`처럼 창 크기에 맞춰 줄여 그린다.
+- 처음에는 원본 크기 그대로 창을 1280 × 1024로 만들었으나, 1080 높이 화면에서는 창 아래쪽이 화면 밖으로 잘려 위아래 경계에서 멈추는 것을 확인할 수 없었다. 그래서 같은 비율의 1000 × 800으로 줄였다.
 
 ## 5. 기능 요구사항
 
 | ID | 요구사항                                                                                                                 |
 | -- | ------------------------------------------------------------------------------------------------------------------------ |
-| F1 | 실행하면 1280 × 1024 캔버스를 열고`TUK_GROUND.png`를 배경으로 그린다.                                                 |
+| F1 | 실행하면 1000 × 800 캔버스를 열고 `TUK_GROUND.png`를 창 크기에 맞춰 배경으로 그린다.                                                 |
 | F2 | 소년은 화면 가운데에서**오른쪽을 바라보는 대기 상태**로 시작한다.                                                  |
 | F3 | ← → 키로 가로 방향`dir_x`를, ↑ ↓ 키로 세로 방향 `dir_y`를 바꾼다. 누르면 더하고 떼면 되돌린다(실습과 같은 방식). |
 | F4 | 매 프레임`x += dir_x * MOVE_SPEED`, `y += dir_y * MOVE_SPEED`로 위치를 옮긴다.                                       |
@@ -80,7 +81,7 @@ LEC10 실습 `move_character_with_key.py`(좌우 이동)와 `move_character_with
 
 ## 6. 비기능 요구사항
 
-- **설정값은 상수로**: `TUK_WIDTH = 1280`, `TUK_HEIGHT = 1024`, `FRAME_SIZE = 100`, `MOVE_SPEED`, `FRAME_DELAY`를 파일 위쪽에 모은다.
+- **설정값은 상수로**: `TUK_WIDTH = 1000`, `TUK_HEIGHT = 800`, `FRAME_SIZE = 100`, `MOVE_SPEED`, `FRAME_DELAY`를 파일 위쪽에 모은다.
 - **줄 번호도 상수로**: `IDLE_RIGHT = 300`, `IDLE_LEFT = 200`, `RUN_RIGHT = 100`, `RUN_LEFT = 0`. 숫자를 코드 곳곳에 직접 쓰지 않는다.
 - **경계값 계산**: 소년 그림의 가운데가 (x, y)이므로 이동 범위는 `FRAME_SIZE // 2` ~ `화면 크기 - FRAME_SIZE // 2`로 둔다.
 - **역할 나누기**: 입력은 `handle_events()`, 위치·방향 갱신은 `update_boy()`, 그리기는 `draw_boy()`가 맡는다.
@@ -88,16 +89,16 @@ LEC10 실습 `move_character_with_key.py`(좌우 이동)와 `move_character_with
 ## 7. 화면 설계
 
 ```
-+----------------------- 1280 -----------------------+
++----------------------- 1000 -----------------------+
 |  TUK_GROUND.png (배경)                              |
 |                        ↑                            |
 |                                                     |
-|                  ←  [소년]  →                      |  (높이 1024)
+|                  ←  [소년]  →                      |  (높이 800)
 |                                                     |
 |                        ↓                            |
 |                                                     |
 +-----------------------------------------------------+
-  소년이 움직일 수 있는 범위: x 50 ~ 1230, y 50 ~ 974
+  소년이 움직일 수 있는 범위: x 50 ~ 950, y 50 ~ 750
 ```
 
 ## 8. 코드 구조
@@ -106,7 +107,7 @@ LEC10 실습 `move_character_with_key.py`(좌우 이동)와 `move_character_with
 from pico2d import *
 
 # 1. 설정 상수
-TUK_WIDTH, TUK_HEIGHT = 1280, 1024
+TUK_WIDTH, TUK_HEIGHT = 1000, 800
 FRAME_SIZE, MOVE_SPEED, FRAME_DELAY
 IDLE_RIGHT, IDLE_LEFT, RUN_RIGHT, RUN_LEFT = 300, 200, 100, 0
 
@@ -130,7 +131,7 @@ frame = 0
 # 5. 메인 루프
 while running:
     clear_canvas()
-    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2, TUK_WIDTH, TUK_HEIGHT)
     draw_boy()
     update_canvas()
     handle_events()
@@ -169,10 +170,11 @@ close_canvas()
 | 12 | 화면 경계에서 멈추기(F7)                                 | 네 방향 모두 가장자리에서 멈춤       |
 | 13 | `update_boy()`, `draw_boy()` 함수로 정리             | 동작 변화 없음                       |
 | 14 | 이동 속도·프레임 간격 최종 조정, 주석 정리              | 최종 점검                            |
+| 15 | 창 크기를 1000 × 800으로 줄이고 배경을 창에 맞춰 그리기     | 위아래 경계까지 화면에 보임          |
 
 ## 10. 완료 기준
 
-- [ ] `python boy_move_4dir.py`로 실행되고 1280 × 1024 창에 TUK_GROUND 배경이 보인다.
+- [ ] `python boy_move_4dir.py`로 실행되고 1000 × 800 창에 TUK_GROUND 배경이 꽉 차게 보인다.
 - [ ] 방향키 네 개로 소년이 상하좌우로 움직인다.
 - [ ] 좌우로 움직이면 그 방향으로 달리는 애니메이션이 나온다.
 - [ ] 위아래로 움직일 때 바라보던 방향이 바뀌지 않는다.

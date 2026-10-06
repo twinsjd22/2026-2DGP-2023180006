@@ -46,17 +46,20 @@ running = True
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
 dir_x, dir_y = 0, 0
+face_dir = 1  # 1: 오른쪽, -1: 왼쪽
 
 while running:
     clear_canvas()
     tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
     if dir_x != 0 or dir_y != 0:
-        action = RUN_RIGHT
+        action = RUN_RIGHT if face_dir == 1 else RUN_LEFT
     else:
         action = IDLE_RIGHT
     character.clip_draw(frame * FRAME_SIZE, action, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()
+    if dir_x != 0:
+        face_dir = dir_x
     x += dir_x * MOVE_SPEED
     y += dir_y * MOVE_SPEED
     frame = (frame + 1) % 8

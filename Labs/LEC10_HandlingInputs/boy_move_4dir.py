@@ -42,6 +42,25 @@ def handle_events():
                 dir_y += 1
 
 
+def update_boy():
+    global x, y, face_dir
+
+    if dir_x != 0:
+        face_dir = dir_x
+    x += dir_x * MOVE_SPEED
+    y += dir_y * MOVE_SPEED
+    x = clamp(FRAME_SIZE // 2, x, TUK_WIDTH - FRAME_SIZE // 2)
+    y = clamp(FRAME_SIZE // 2, y, TUK_HEIGHT - FRAME_SIZE // 2)
+
+
+def draw_boy():
+    if dir_x != 0 or dir_y != 0:
+        action = RUN_RIGHT if face_dir == 1 else RUN_LEFT
+    else:
+        action = IDLE_RIGHT if face_dir == 1 else IDLE_LEFT
+    character.clip_draw(frame * FRAME_SIZE, action, FRAME_SIZE, FRAME_SIZE, x, y)
+
+
 running = True
 x, y = TUK_WIDTH // 2, TUK_HEIGHT // 2
 frame = 0
@@ -51,19 +70,10 @@ face_dir = 1  # 1: 오른쪽, -1: 왼쪽
 while running:
     clear_canvas()
     tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
-    if dir_x != 0 or dir_y != 0:
-        action = RUN_RIGHT if face_dir == 1 else RUN_LEFT
-    else:
-        action = IDLE_RIGHT if face_dir == 1 else IDLE_LEFT
-    character.clip_draw(frame * FRAME_SIZE, action, FRAME_SIZE, FRAME_SIZE, x, y)
+    draw_boy()
     update_canvas()
     handle_events()
-    if dir_x != 0:
-        face_dir = dir_x
-    x += dir_x * MOVE_SPEED
-    y += dir_y * MOVE_SPEED
-    x = clamp(FRAME_SIZE // 2, x, TUK_WIDTH - FRAME_SIZE // 2)
-    y = clamp(FRAME_SIZE // 2, y, TUK_HEIGHT - FRAME_SIZE // 2)
+    update_boy()
     frame = (frame + 1) % 8
     delay(FRAME_DELAY)
 

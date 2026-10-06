@@ -54,7 +54,7 @@ while running:
     if dir_x != 0 or dir_y != 0:
         action = RUN_RIGHT if face_dir == 1 else RUN_LEFT
     else:
-        action = IDLE_RIGHT
+        action = IDLE_RIGHT if face_dir == 1 else IDLE_LEFT
     character.clip_draw(frame * FRAME_SIZE, action, FRAME_SIZE, FRAME_SIZE, x, y)
     update_canvas()
     handle_events()

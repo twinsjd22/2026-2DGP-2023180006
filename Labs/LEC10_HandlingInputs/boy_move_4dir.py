@@ -1,6 +1,6 @@
 from pico2d import *
 
-TUK_WIDTH, TUK_HEIGHT = 1280, 1024
+TUK_WIDTH, TUK_HEIGHT = 1000, 800  # 배경(1280x1024)과 같은 5:4 비율로 줄인 창 크기
 FRAME_SIZE = 100   # 스프라이트 한 칸의 크기
 MOVE_SPEED = 10    # 한 프레임에 움직이는 거리(px)
 FRAME_DELAY = 0.05
@@ -72,7 +72,7 @@ face_dir = 1  # 1: 오른쪽, -1: 왼쪽
 
 while running:
     clear_canvas()
-    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2)
+    tuk_ground.draw(TUK_WIDTH // 2, TUK_HEIGHT // 2, TUK_WIDTH, TUK_HEIGHT)
     draw_boy()
     update_canvas()
     handle_events()

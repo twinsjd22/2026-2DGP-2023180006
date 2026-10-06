@@ -1,8 +1,8 @@
 from pico2d import *
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
-FRAME_SIZE = 100
-MOVE_SPEED = 10
+FRAME_SIZE = 100   # 스프라이트 한 칸의 크기
+MOVE_SPEED = 10    # 한 프레임에 움직이는 거리(px)
 FRAME_DELAY = 0.05
 
 # animation_sheet.png에서 동작별 줄의 bottom 좌표
@@ -14,6 +14,7 @@ character = load_image('animation_sheet.png')
 
 
 def handle_events():
+    """방향키를 누르면 방향을 더하고, 떼면 되돌린다. 창 닫기와 ESC는 종료."""
     global running, dir_x, dir_y
 
     events = get_events()
@@ -43,6 +44,7 @@ def handle_events():
 
 
 def update_boy():
+    """좌우로 움직일 때만 바라보는 방향을 바꾸고, 화면 안에서만 이동한다."""
     global x, y, face_dir
 
     if dir_x != 0:
@@ -54,6 +56,7 @@ def update_boy():
 
 
 def draw_boy():
+    """움직이면 달리기, 멈추면 대기 줄을 바라보는 방향에 맞춰 그린다."""
     if dir_x != 0 or dir_y != 0:
         action = RUN_RIGHT if face_dir == 1 else RUN_LEFT
     else:

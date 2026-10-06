@@ -62,6 +62,8 @@ while running:
         face_dir = dir_x
     x += dir_x * MOVE_SPEED
     y += dir_y * MOVE_SPEED
+    x = clamp(FRAME_SIZE // 2, x, TUK_WIDTH - FRAME_SIZE // 2)
+    y = clamp(FRAME_SIZE // 2, y, TUK_HEIGHT - FRAME_SIZE // 2)
     frame = (frame + 1) % 8
     delay(FRAME_DELAY)
 
